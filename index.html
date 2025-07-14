@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bay Area Girls Lacrosse Club</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FA008B',
+                        secondary: '#000000',
+                    },
+                    fontFamily: {
+                        sans: ['Quicksand', 'sans-serif'],
+                        heading: ['Teko', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+
+
+
+
+
+
+
+
+   .swiper-slide {
+            transition: all 0.3s ease;
+        }
+        .swiper-slide:hover {
+            transform: scale(1.02);
+        }
+        .program-card {
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+        .program-card:hover {
+            box-shadow: 0 15px 40px -5px rgba(0, 0, 0, 0.15);
+        }
+        .see-more-btn {
+            transition: all 0.3s ease;
+        }
+        .see-more-btn:hover {
+            transform: translateX(5px);
+        }
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 1rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .swiper-button-next:hover, 
+        .swiper-button-prev:hover {
+            transform: scale(1.05);
+        }
+
+
+
+        @import url('https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap');
+        
+        @keyframes gradientAnimation1 {
+            0% { background-position: 0% 50% }
+            50% { background-position: 100% 50% }
+            100% { background-position: 0% 50% }
+        }
+        
+        @keyframes gradientAnimation2 {
+            0% { background-position: 0% 50% }
+            50% { background-position: 100% 50% }
+            100% { background-position: 0% 50% }
+        }
+        
+        @keyframes gradientAnimation3 {
+            0% { background-position: 0% 50% }
+            50% { background-position: 100% 50% }
+            100% { background-position: 0% 50% }
+        }
+        
+        @keyframes gradientAnimation4 {
+            0% { background-position: 0% 50% }
+            50% { background-position: 100% 50% }
+            100% { background-position: 0% 50% }
+        }
+        
+        @keyframes gradientAnimation5 {
+            0% { background-position: 0% 50% }
+            50% { background-position: 100% 50% }
+            100% { background-position: 0% 50% }
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .hero-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        
+        .hero-slide.active {
+            opacity: 1;
+        }
+        
+        .slide-content {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.8s ease 0.3s;
+        }
+        
+        .active .slide-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #FA008B;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .dropdown:hover .dropdown-menu,
+        .dropdown-menu:hover {
+            display: block;
+        }
+        
+        .dropdown:not(:hover) .dropdown-menu {
+            transition-delay: 0.75s;
+        }
+        
+        .btn-primary {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .logo {
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .section-nav-btn {
+            transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+            cursor: pointer;
+            position: relative;
+            transform: scale(1);
+        }
+
+        .section-nav-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .section-nav-btn.scale-110 {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255,255,255,0.5);
+        }
+
+        .section-nav-btn::after {
+            content: attr(title);
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        @keyframes playerSlideIn {
+            0% {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes playerSlideOut {
+            0% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        #playerGif {
+            right: -100px;
+            opacity: 0;
+            transform: translateX(100px);
+            transition: opacity 1.5s ease, transform 1.5s ease;
+        }
+
+        #playerGif.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        #playerGif.inactive {
+            opacity: 0;
+            transform: translateX(100px);
+        }
+        
+        .animate-slide-in-right {
+            animation: slide-in-right 1.5s ease forwards;
+        }
+
+        .section-nav-btn:hover::after {
+            opacity: 1;
+        }
+
+        footer {
+            position: relative;
+            z-index: 10;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #FA008B, #FF5858, #8E54E9);
+        }
+
+        #footerScrollBtn {
+            transition: all 0.3s ease;
+        }
+
+        #footerScrollBtn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+    <!-- Section 1 - Hero Slider -->
+    <section id="EN_section1" class="relative h-screen w-full overflow-hidden">
+        <!-- Floating Logo -->
+        <div class="fixed top-6 left-6 z-50">
+            <div class="logo bg-white p-2 rounded-lg shadow-lg backdrop-blur-sm bg-opacity-80">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center mr-2">
+                        <i class="fas fa-lacrosse-stick text-white text-xl"></i>
+                    </div>
+                    <span class="font-heading text-2xl font-bold text-primary">B2B Logo</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Navigation -->
+        <nav class="fixed top-6 right-6 z-50 backdrop-blur-sm bg-white bg-opacity-80 px-4 py-2 rounded-lg shadow-lg">
+            <div class="hidden md:block">
+                <ul class="flex space-x-8">
+                    <li><a href="#" class="nav-link text-white font-semibold text-lg hover:text-primary">Home</a></li>
+                    <li><a href="#" class="nav-link text-white font-semibold text-lg hover:text-primary">Schedule</a></li>
+                    <li class="dropdown relative">
+                        <a href="#" class="nav-link text-white font-semibold text-lg hover:text-primary flex items-center">
+                            Teams <i class="fas fa-chevron-down ml-1 text-sm"></i>
+                        </a>
+                        <ul class="dropdown-menu absolute hidden bg-white rounded-md shadow-lg mt-2 py-1 w-48">
+                            <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-primary hover:text-white">East Bay</a></li>
+                            <li><a href="#" class="block px-4 py-2 text-gray-800 hover:bg-primary hover:text-white">North Bay</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="nav-link text-white font-semibold text-lg hover:text-primary">Shop</a></li>
+                    <li><a href="#" class="nav-link text-white font-semibold text-lg hover:text-primary">About Us</a></li>
+                </ul>
+            </div>
+            <div class="md:hidden">
+                <button class="text-white text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Slides -->
+        <div class="relative h-full w-full">
+            <!-- Slide 1 -->
+            <div class="hero-slide active" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80');">
+                <div class="container mx-auto h-full flex items-end pb-20 px-6">
+                    <div class="slide-content max-w-2xl text-white">
+                        <h1 class="font-heading text-5xl md:text-6xl lg:text-7xl mb-4 leading-tight">EMPOWERING GIRLS THROUGH LACROSSE</h1>
+                        <p class="text-lg md:text-xl mb-8">Join the fastest growing girls lacrosse club in the Bay Area. We focus on skill development, teamwork, and building confidence both on and off the field.</p>
+                        <a href="#" class="btn-primary inline-block bg-primary text-white font-bold py-3 px-8 rounded-full text-lg uppercase tracking-wider">Join Our Team</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 2 -->
+            <div class="hero-slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1517649763962-0c623066f291?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80');">
+                <div class="container mx-auto h-full flex items-end pb-20 px-6">
+                    <div class="slide-content max-w-2xl text-white">
+                        <h1 class="font-heading text-5xl md:text-6xl lg:text-7xl mb-4 leading-tight">2023 SEASON NOW OPEN</h1>
+                        <p class="text-lg md:text-xl mb-8">Registration for our competitive and recreational programs is now open. Limited spots available for all age groups from U10 to Varsity.</p>
+                        <a href="#" class="btn-primary inline-block bg-primary text-white font-bold py-3 px-8 rounded-full text-lg uppercase tracking-wider">View Schedule</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3 -->
+            <div class="hero-slide" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80');">
+                <div class="container mx-auto h-full flex items-end pb-20 px-6">
+                    <div class="slide-content max-w-2xl text-white">
+                        <h1 class="font-heading text-5xl md:text-6xl lg:text-7xl mb-4 leading-tight">LEARN FROM THE BEST</h1>
+                        <p class="text-lg md:text-xl mb-8">Our coaching staff includes former collegiate players and certified trainers dedicated to developing the next generation of women athletes.</p>
+                        <a href="#" class="btn-primary inline-block bg-primary text-white font-bold py-3 px-8 rounded-full text-lg uppercase tracking-wider">Meet The Coaches</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide Indicators -->
+        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-50 flex space-x-2">
+            <button class="w-3 h-3 rounded-full bg-white opacity-100 slide-indicator active" data-slide="0"></button>
+            <button class="w-3 h-3 rounded-full bg-white opacity-50 slide-indicator" data-slide="1"></button>
+            <button class="w-3 h-3 rounded-full bg-white opacity-50 slide-indicator" data-slide="2"></button>
+        </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section id="EN_section2" class="relative h-screen w-full overflow-hidden" style="background: linear-gradient(135deg, #FF8073 0%, #FA008B 100%); background-size: 200% 200%; animation: gradientAnimation1 8s ease infinite;">
+       
+
+<div style="
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: url('your-background.gif') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+">
+  <div style="max-width: 90%; padding: 20px;">
+
+
+
+
+ <div class="full-width-container py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+ <br>
+
+<div style="display:flex; justify-content:center; align-items:center; text-align:center; font-size:20px; font-family:'Helvetica Neue', sans-serif; color:white;">
+- Our Team Programs -
+</div>
+
+        <!-- Slider Container -->
+        <div class="swiper programSwiper relative">
+
+
+            <div class="swiper-wrapper">
+                <!-- Slide 1 -->
+                <div class="swiper-slide px-4 py-6">
+                    <div class="program-card bg-white rounded-xl overflow-hidden h-full flex flex-col">
+                        <div class="aspect-w-16 aspect-h-9 overflow-hidden">
+                            <picture>
+                                <source media="(min-width: 1024px)" srcset="NBB.jpg">
+                                <source media="(min-width: 768px)" srcset="NBB.jpg">
+                                <img src="NBB.jpg" 
+                                     alt="NORTH BAY BADDIES" 
+                                     class="w-full h-full object-cover">
+                            </picture>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <h3 class="text-xl font-bold text-gray-900">NORTH BAY BADDIES</h3>
+                            <p class="text-gray-500 mt-1">2030-2031</p>
+   
+                            <a href="#" class="see-more-btn mt-6 inline-flex items-center px-4 py-2 bg-primary text-white rounded-lg font-medium group transition-all hover:bg-opacity-90 shadow-sm">
+                                See More
+                                <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+   <!-- Slide 4 -->
+                <div class="swiper-slide px-4 py-6">
+                    <div class="program-card bg-white rounded-xl overflow-hidden h-full flex flex-col">
+                        <div class="aspect-w-16 aspect-h-9 overflow-hidden">
+                            <picture>
+                                <source media="(min-width: 1024px)" srcset="NBB.jpg">
+                                <source media="(min-width: 768px)" srcset="NBB.jpg">
+                                <img src="NBB.jpg" 
+                                     alt="EAST BAY BADDIES" 
+                                     class="w-full h-full object-cover">
+                            </picture>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <h3 class="text-xl font-bold text-gray-900">EAST BAY BADDIES</h3>
+                            <p class="text-gray-500 mt-1">2030-2031</p>
+              
+                             <a href="#" class="see-more-btn mt-6 inline-flex items-center px-4 py-2 bg-primary text-white rounded-lg font-medium group transition-all hover:bg-opacity-90 shadow-sm">
+                                See More
+                                <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+
+                <div class="swiper-slide px-4 py-6">
+
+                    <div class="program-card bg-white rounded-xl overflow-hidden h-full flex flex-col">
+                        <div class="aspect-w-16 aspect-h-9 overflow-hidden">
+                            <picture>
+                                <source media="(min-width: 1024px)" srcset="NBB.jpg">
+                                <source media="(min-width: 768px)" srcset="NBB.jpg">
+                                <img src="NBB.jpg" 
+                                     alt="NORTH BAY BADDIES" 
+                                     class="w-full h-full object-cover">
+                            </picture>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <h3 class="text-xl font-bold text-gray-900">NORTH BAY BADDIES</h3>
+                            <p class="text-gray-500 mt-1">2032-2033</p>
+
+                             <a href="#" class="see-more-btn mt-6 inline-flex items-center px-4 py-2 bg-primary text-white rounded-lg font-medium group transition-all hover:bg-opacity-90 shadow-sm">
+                                See More
+                                <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Slide 5 -->
+               <div class="swiper-slide px-4 py-6">
+                    <div class="program-card bg-white rounded-xl overflow-hidden h-full flex flex-col">
+                        <div class="aspect-w-16 aspect-h-9 overflow-hidden">
+                            <picture>
+                                <source media="(min-width: 1024px)" srcset="NBB.jpg">
+                                <source media="(min-width: 768px)" srcset="NBB.jpg">
+                                <img src="NBB.jpg" 
+                                     alt="EAST BAY BADDIES" 
+                                     class="w-full h-full object-cover">
+                            </picture>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <h3 class="text-xl font-bold text-gray-900">EAST BAY BADDIES</h3>
+                            <p class="text-gray-500 mt-1">2032-2033</p>
+              
+                            <a href="#" class="see-more-btn mt-6 inline-flex items-center px-4 py-2 bg-primary text-white rounded-lg font-medium group transition-all hover:bg-opacity-90 shadow-sm">
+                                See More
+                                <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="swiper-slide px-4 py-6">
+                    <div class="program-card bg-white rounded-xl overflow-hidden h-full flex flex-col">
+                        <div class="aspect-w-16 aspect-h-9 overflow-hidden">
+                            <picture>
+                                <source media="(min-width: 1024px)" srcset="NBB.jpg">
+                                <source media="(min-width: 768px)" srcset="NBB.jpg">
+                                <img src="NBB.jpg" 
+                                     alt="NORTH BAY BADDIES" 
+                                     class="w-full h-full object-cover">
+                            </picture>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <h3 class="text-xl font-bold text-gray-900">NORTH BAY BADDIES</h3>
+                            <p class="text-gray-500 mt-1">2034-2035</p>
+    
+                            <a href="#" class="see-more-btn mt-6 inline-flex items-center px-4 py-2 bg-primary text-white rounded-lg font-medium group transition-all hover:bg-opacity-90 shadow-sm">
+                                See More
+                                <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+
+             
+
+                <!-- Slide 6 -->
+                <div class="swiper-slide px-4 py-6">
+                    <div class="program-card bg-white rounded-xl overflow-hidden h-full flex flex-col">
+                        <div class="aspect-w-16 aspect-h-9 overflow-hidden">
+                            <picture>
+                                <source media="(min-width: 1024px)" srcset="NBB.jpg">
+                                <source media="(min-width: 768px)" srcset="NBB.jpg">
+                                <img src="NBB.jpg" 
+                                     alt="EAST BAY BADDIES" 
+                                     class="w-full h-full object-cover">
+                            </picture>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <h3 class="text-xl font-bold text-gray-900">EAST BAY BADDIES</h3>
+                            <p class="text-gray-500 mt-1">2034-2035</p>
+                        
+                            <a href="#" class="see-more-btn mt-6 inline-flex items-center px-4 py-2 bg-primary text-white rounded-lg font-medium group transition-all hover:bg-opacity-90 shadow-sm">
+                                See More
+                                <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="swiper-button-next hidden sm:flex items-center justify-center w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm text-primary hover:bg-white transition-all shadow-sm"></div>
+            <div class="swiper-button-prev hidden sm:flex items-center justify-center w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm text-primary hover:bg-white transition-all shadow-sm"></div>
+            
+            <!-- Pagination Dots -->
+            <div class="swiper-pagination mt-6"></div>
+
+<style>
+  .swiper-pagination-bullet {
+    background-color: #ffffff !important;
+  }
+  .swiper-pagination-bullet-active {
+    background-color: #ffffff !important;
+  }
+</style>
+ <br>
+        </div>
+<button style="background-color:#ffffff; color:#000000; padding:10px 24px; border:1px solid #ccc; border-radius:8px; font-size:16px; cursor:pointer; transition:all 0.3s ease;" 
+onmouseover="this.style.backgroundColor='#f0f0f0'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.1)'" 
+onmouseout="this.style.backgroundColor='#ffffff'; this.style.boxShadow='none'">
+ All Team Programs
+</button>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</div>        
+
+    </section>
+
+    <!-- Section 3 -->
+    <section id="EN_section3" class="relative h-screen w-full overflow-hidden" style="background: linear-gradient(135deg, #d30090 0%, #FA008B 100%); background-size: 200% 200%; animation: gradientAnimation2 10s ease infinite;">
+        <!-- Player GIF -->
+        <div class="absolute right-0 top-0 h-full w-full">
+            <img src="Loading4.png" alt="Lacrosse Player" 
+                 class="h-full w-auto max-w-none absolute opacity-0 right-0" 
+                 id="playerGif">
+        </div>
+        
+        <div class="container mx-auto h-full flex items-center px-6 relative z-10">
+            <div class="max-w-2xl text-white bg-black bg-opacity-50 p-8 rounded-lg">
+                <h1 class="font-heading text-5xl md:text-6xl lg:text-7xl mb-4 leading-tight">STAY IN TOUCH</h1>
+                <p class="text-lg md:text-xl mb-8">Email Input and Subtext paragraph - Paragraph length tst</p>
+                <a href="#" class="btn-primary inline-block bg-white text-purple-700 font-bold py-3 px-8 rounded-full text-lg uppercase tracking-wider">Submit</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4 -->
+    <section id="EN_section4" class="relative h-screen w-full overflow-hidden" style="background: linear-gradient(135deg, #FA008B 0%, #FF5858 100%); background-size: 200% 200%; animation: gradientAnimation3 12s ease infinite;">
+        <div class="container mx-auto h-full flex items-center justify-center px-6">
+            <div class="max-w-2xl text-center text-white">
+                <h1 class="font-heading text-5xl md:text-6xl lg:text-7xl mb-4 leading-tight">SCEDULE Header Text</h1>
+                <p class="text-lg md:text-xl mb-8">Scedule subtext paragraph - events / practice tryouts 12347 two lines paragraph text sample</p>
+                <a href="#" class="btn-primary inline-block bg-white text-pink-600 font-bold py-3 px-8 rounded-full text-lg uppercase tracking-wider">Buddies Scedule</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5 -->
+    <section id="EN_section5" class="relative h-screen w-full overflow-hidden" style="background: linear-gradient(135deg, #FA008B 0%, #00C9FF 100%); background-size: 200% 200%; animation: gradientAnimation4 15s ease infinite;">
+        <div class="container mx-auto h-full flex items-center justify-center px-6">
+            <div class="max-w-2xl text-center text-white">
+                <h1 class="font-heading text-5xl md:text-6xl lg:text-7xl mb-4 leading-tight">COMMUNITY</h1>
+                <p class="text-lg md:text-xl mb-8">Join our growing community of players, parents, and alumni supporting girls lacrosse in the Bay Area.</p>
+                <a href="#" class="btn-primary inline-block bg-white text-green-600 font-bold py-3 px-8 rounded-full text-lg uppercase tracking-wider">IG Data</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden" id="mobileMenu">
+        <div class="flex flex-col items-center justify-center h-full">
+            <button class="absolute top-6 right-6 text-white text-3xl" id="closeMenu">
+                <i class="fas fa-times"></i>
+            </button>
+            <ul class="space-y-8 text-center">
+                <li><a href="#" class="text-white text-2xl font-bold hover:text-primary font-sans">Home</a></li>
+                <li><a href="#" class="text-white text-2xl font-bold hover:text-primary font-sans">Schedule</a></li>
+                <li class="relative">
+                    <a href="#" class="text-white text-2xl font-bold hover:text-primary flex items-center justify-center font-sans">
+                        Teams <i class="fas fa-chevron-down ml-2 text-sm"></i>
+                    </a>
+                    <ul class="mt-4 space-y-4 hidden" id="mobileTeams">
+                        <li><a href="#" class="text-white text-xl hover:text-primary block">East Bay</a></li>
+                        <li><a href="#" class="text-white text-xl hover:text-primary block">North Bay</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="text-white text-2xl font-bold hover:text-primary">Shop</a></li>
+                <li><a href="#" class="text-white text-2xl font-bold hover:text-primary">About Us</a></li>
+            </ul>
+        </div>
+    </div>
+  <!-- Section 6 -->
+    <section id="EN_section6" class="relative h-screen w-full overflow-hidden" style="background: linear-gradient(135deg, #FA008B 0%, #00C9FF 100%); background-size: 200% 200%; animation: gradientAnimation4 15s ease infinite;">
+        <div class="container mx-auto h-full flex items-center justify-center px-6">
+            <div class="max-w-2xl text-center text-white">
+                <h1 class="font-heading text-5xl md:text-6xl lg:text-7xl mb-4 leading-tight">footer</h1>
+                <p class="text-lg md:text-xl mb-8">Footeer Aria</p>
+               
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden" id="mobileMenu">
+        <div class="flex flex-col items-center justify-center h-full">
+            <button class="absolute top-6 right-6 text-white text-3xl" id="closeMenu">
+                <i class="fas fa-times"></i>
+            </button>
+            <ul class="space-y-8 text-center">
+                <li><a href="#" class="text-white text-2xl font-bold hover:text-primary font-sans">Home</a></li>
+                <li><a href="#" class="text-white text-2xl font-bold hover:text-primary font-sans">Schedule</a></li>
+                <li class="relative">
+                    <a href="#" class="text-white text-2xl font-bold hover:text-primary flex items-center justify-center font-sans">
+                        Teams <i class="fas fa-chevron-down ml-2 text-sm"></i>
+                    </a>
+                    <ul class="mt-4 space-y-4 hidden" id="mobileTeams">
+                        <li><a href="#" class="text-white text-xl hover:text-primary block">East Bay</a></li>
+                        <li><a href="#" class="text-white text-xl hover:text-primary block">North Bay</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="text-white text-2xl font-bold hover:text-primary">Shop</a></li>
+                <li><a href="#" class="text-white text-2xl font-bold hover:text-primary">About Us</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Enhanced Section Navigation -->
+    <div class="fixed right-6 bottom-6 z-50 flex flex-col space-y-3">
+        <button class="section-nav-btn w-12 h-12 rounded-full bg-primary bg-opacity-80 hover:bg-opacity-100 transition-all flex items-center justify-center border-2 border-white shadow-lg" data-section="EN_section1" title="Home">
+            <i class="fas fa-home text-white text-xl"></i>
+        </button>
+        <button class="section-nav-btn w-12 h-12 rounded-full bg-orange-500 bg-opacity-80 hover:bg-opacity-100 transition-all flex items-center justify-center border-2 border-white shadow-lg" data-section="EN_section2" title="Skills">
+            <i class="fas fa-running text-white text-xl"></i>
+        </button>
+        <button class="section-nav-btn w-12 h-12 rounded-full bg-purple-600 bg-opacity-80 hover:bg-opacity-100 transition-all flex items-center justify-center border-2 border-white shadow-lg" data-section="EN_section3" title="Team">
+            <i class="fas fa-users text-white text-xl"></i>
+        </button>
+        <button class="section-nav-btn w-12 h-12 rounded-full bg-pink-500 bg-opacity-80 hover:bg-opacity-100 transition-all flex items-center justify-center border-2 border-white shadow-lg" data-section="EN_section4" title="Recruiting">
+            <i class="fas fa-graduation-cap text-white text-xl"></i>
+        </button>
+        <button class="section-nav-btn w-12 h-12 rounded-full bg-blue-500 bg-opacity-80 hover:bg-opacity-100 transition-all flex items-center justify-center border-2 border-white shadow-lg" data-section="EN_section5" title="Community">
+            <i class="fas fa-hands-helping text-white text-xl"></i>
+        </button>
+    </div>
+
+   
+ <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+  document.addEventListener('DOMContentLoaded', function() {
+            const swiper = new Swiper('.programSwiper', {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                loop: true,
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                    bulletClass: 'swiper-pagination-bullet',
+                    bulletActiveClass: 'swiper-pagination-bullet-active',
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 1,
+                        spaceBetween: 20
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 20
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 20
+                    }
+                }
+            });
+
+            // Add custom styles for pagination bullets
+            const paginationBullets = document.querySelectorAll('.swiper-pagination-bullet');
+            paginationBullets.forEach(bullet => {
+                bullet.style.backgroundColor = '#FA008B';
+            });
+        });
+
+
+        // Fullscreen sections and smooth scrolling
+        const sections = document.querySelectorAll('section[id^="EN_section"]');
+        const footerSection = document.getElementById('footer-section');
+        const navButtons = document.querySelectorAll('.section-nav-btn');
+        let isScrolling = false;
+        let currentSection = 0;
+
+        // Set sections to full viewport height
+        sections.forEach(section => {
+            section.style.height = `${window.innerHeight}px`;
+        });
+
+        // Enhanced scroll to section function with smooth animation
+        function scrollToSection(index) {
+            const allSections = [...sections, footerSection];
+            if (isScrolling || index < 0 || index >= allSections.length) return;
+            
+            isScrolling = true;
+            currentSection = index;
+            
+            // Calculate target position with some offset from top
+            const targetSection = sections[index];
+            const targetPosition = targetSection.offsetTop;
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            const duration = 800; // milliseconds
+            let startTime = null;
+            
+            // Highlight active button immediately
+            navButtons.forEach((btn, i) => {
+                btn.classList.toggle('scale-110', i === index);
+                btn.classList.toggle('shadow-xl', i === index);
+            });
+
+            // Custom smooth scroll animation
+            function animation(currentTime) {
+                if (!startTime) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+                
+                if (timeElapsed < duration) {
+                    requestAnimationFrame(animation);
+                } else {
+                    isScrolling = false;
+                }
+            }
+            
+            // Easing function for smooth acceleration/deceleration
+            function easeInOutQuad(t, b, c, d) {
+                t /= d/2;
+                if (t < 1) return c/2*t*t + b;
+                t--;
+                return -c/2 * (t*(t-2) - 1) + b;
+            }
+            
+            requestAnimationFrame(animation);
+        }
+
+        // Enhanced button click handlers with smooth scroll
+        navButtons.forEach((btn) => {
+            btn.addEventListener('click', function() {
+                const sectionId = this.getAttribute('data-section');
+                const sectionIndex = Array.from(sections).findIndex(s => s.id === sectionId);
+                if (sectionIndex >= 0) {
+                    scrollToSection(sectionIndex);
+                }
+            });
+        });
+
+        // Handle wheel events for section navigation
+        window.addEventListener('wheel', (e) => {
+            if (isScrolling) return;
+            
+            // Get all scrollable sections including footer
+            const allSections = [...sections, footerSection];
+            const currentSectionIndex = allSections.findIndex(section => {
+                const rect = section.getBoundingClientRect();
+                return rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
+            });
+            
+            // Only do automatic section scrolling if we're not at the last section
+            if (currentSectionIndex < allSections.length - 1 || e.deltaY < 0) {
+                if (e.deltaY > 0) {
+                    scrollToSection(Math.min(currentSection + 1, sections.length - 1));
+                } else {
+                    scrollToSection(Math.max(currentSection - 1, 0));
+                }
+            }
+        }, { passive: false });
+
+        // Highlight active section button while scrolling
+        window.addEventListener('scroll', () => {
+            const allSections = [...sections, document.getElementById('footer-section')];
+            let currentSectionIndex = 0;
+            
+            allSections.forEach((section, index) => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    currentSectionIndex = index;
+                    
+                    // Trigger GIF animation when section 3 is focused
+                    if (section.id === 'EN_section3') {
+                        const gif = document.getElementById('playerGif');
+                        if (gif) {
+                            gif.classList.remove('inactive');
+                            gif.classList.add('active');
+                        }
+                    } else {
+                        const gif = document.getElementById('playerGif');
+                        if (gif && gif.classList.contains('active')) {
+                            gif.classList.remove('active');
+                            gif.classList.add('inactive');
+                        }
+                    }
+                }
+            });
+            
+            currentSection = currentSectionIndex;
+
+            navButtons.forEach((btn, index) => {
+                btn.classList.toggle('scale-110', index === currentSection && !isInFooter);
+                btn.classList.toggle('shadow-xl', index === currentSection && !isInFooter);
+            });
+        });
+
+        // Slider functionality
+        const slides = document.querySelectorAll('.hero-slide');
+        const indicators = document.querySelectorAll('.slide-indicator');
+        let currentSlide = 0;
+        
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            indicators[index].classList.add('active');
+            indicators[index].classList.remove('opacity-50');
+            indicators[index].classList.add('opacity-100');
+            
+            currentSlide = index;
+        }
+        
+        function nextSlide() {
+            let nextIndex = (currentSlide + 1) % slides.length;
+            showSlide(nextIndex);
+        }
+        
+        // Auto slide every 5 seconds
+        setInterval(nextSlide, 5000);
+        
+        // Click on indicators
+        indicators.forEach(indicator => {
+            indicator.addEventListener('click', () => {
+                const slideIndex = parseInt(indicator.getAttribute('data-slide'));
+                showSlide(slideIndex);
+            });
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('.md\\:hidden button');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenuButton = document.getElementById('closeMenu');
+        
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.remove('hidden');
+            });
+        }
+        
+        closeMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+        
+        // Mobile teams dropdown
+        document.querySelectorAll('.relative > a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth < 768) { // Only for mobile
+                    e.preventDefault();
+                    const menu = link.nextElementSibling;
+                    if (menu) {
+                        menu.classList.toggle('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
